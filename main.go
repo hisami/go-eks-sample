@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
-	"os"
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
@@ -14,8 +13,8 @@ import (
 func main() {
 	router := gin.Default()
 
-	router.GET("/", func(c *gin.Context) {
-		file, err := os.Open("img/montes.png")
+	router.POST("/", func(c *gin.Context) {
+		file, _, err := c.Request.FormFile("file")
 		if err != nil {
 			fmt.Println(err.Error())
 			return
