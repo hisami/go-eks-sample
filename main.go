@@ -13,6 +13,10 @@ import (
 func main() {
 	router := gin.Default()
 
+	router.GET("/", func(c *gin.Context) {
+		c.String(200, "Server Running!!")
+	})
+
 	router.POST("/", func(c *gin.Context) {
 		file, _, err := c.Request.FormFile("file")
 		if err != nil {
