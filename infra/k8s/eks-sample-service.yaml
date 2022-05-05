@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: eks-sample-service
+  namespace: eks-sample-app
+  labels:
+    app: rekognition-go
+spec:
+  selector:
+    app: rekognition-go
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: NodePort

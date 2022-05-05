@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eks-sample-deployment
+  namespace: eks-sample-app
+  labels:
+    app: rekognition-go
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rekognition-go
+  template:
+    metadata:
+      labels:
+        app: rekognition-go
+    spec:
+      containers:
+        - name: rekognition-go
+          image: hisamitsu/rekognition-go:latest
+          ports:
+            - containerPort: 8080
