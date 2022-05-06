@@ -51,11 +51,12 @@ func main() {
 		resp, err := svc.DetectText(params)
 		if err != nil {
 			fmt.Println(err.Error())
+			c.JSON(500, gin.H{"msg": err.Error()})
 			return
 		}
 
 		// 結果を出力
-		fmt.Println(resp)
+		c.JSON(200, resp)
 	})
 
 	router.Run()
