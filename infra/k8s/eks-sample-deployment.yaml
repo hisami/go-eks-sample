@@ -15,6 +15,16 @@ spec:
       labels:
         app: rekognition-go
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/arch
+                    operator: In
+                    values:
+                      - amd64
+                      - arm64
       serviceAccountName: eks-rekognition-access
       containers:
         - name: rekognition-go
@@ -23,3 +33,5 @@ spec:
             - name: http
               containerPort: 8080
           imagePullPolicy: IfNotPresent
+      nodeSelector:
+        kubernetes.io/os: linux
