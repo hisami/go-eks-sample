@@ -40,14 +40,14 @@ func main() {
 		// Rekognitionクライアントを作成
 		svc := rekognition.New(sess, aws.NewConfig().WithRegion("ap-northeast-1"))
 
-		// DetectFacesに渡すパラメータを設定
+		// Rekognitionに渡すパラメータを設定
 		params := &rekognition.DetectTextInput{
 			Image: &rekognition.Image{
 				Bytes: bytes,
 			},
 		}
 
-		// DetectFacesを実行
+		// Rekognitionを実行
 		resp, err := svc.DetectText(params)
 		if err != nil {
 			fmt.Println(err.Error())
