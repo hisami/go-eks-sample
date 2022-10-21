@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 services:
   go:
     build:
@@ -7,3 +7,15 @@ services:
       - ./:/go/src
     ports:
       - 8080:8080
+  db:
+    platform: linux/x86_64
+    image: postgres:13.3
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: go_eks_sample
+      TZ: "Asia/Tokyo"
+    volumes:
+      - ./volumes:/var/lib/postgresql/data
+    ports:
+      - 5432:5432

@@ -1,0 +1,4 @@
+db/volumes
+tmp
+.env
+volumes
